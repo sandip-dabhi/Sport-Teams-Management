@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports Team Management - Home</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffffcc;
+      user-select: none;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: #e4e9f0cc;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255 255 255 / 0.25);
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 3rem 4rem;
+      text-align: left;
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      color: #e0eaff;
+      line-height: 1.8;
+    }
+    main h1 {
+      font-weight: 900;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    main h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #a0cfff;
+      border-bottom: 2px solid #66a6ff;
+      padding-bottom: 0.3rem;
+    }
+    main p {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      max-width: 850px;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+    li {
+      margin-bottom: 0.7rem;
+    }
+    .btn-primary {
+      display: block;
+      margin: 3rem auto 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 14px 50px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      color: #0f1923;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(102, 166, 255, 0.54);
+      transition: transform 0.3s ease;
+      max-width: 250px;
+      text-align: center;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      padding: 25px 30px;
+      margin: 20px 0;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+    }
+    .workflow {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .step {
+      flex: 1 1 220px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+      cursor: default;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 40px rgba(102, 166, 255, 0.7);
+    }
+    .step-icon {
+      font-size: 3rem;
+      color: #66a6ff;
+      margin-bottom: 1rem;
+    }
+    .step-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 1rem;
+      color: #cfdcffcc;
+      line-height: 1.5;
+    }
+    .tech-stack {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0 4rem;
+    }
+    .tech-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 140px;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .tech-item:hover {
+      box-shadow: 0 8px 35px rgba(102, 166, 255, 0.7);
+    }
+    .tech-icon {
+      font-size: 3rem;
+      color: #66a6ff;
+      margin-bottom: 10px;
+    }
+    .tech-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .newsletter {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.35);
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .newsletter h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #a0cfff;
+    }
+    .newsletter p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #dce6ffcc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-input {
+      padding: 12px 15px;
+      border-radius: 25px;
+      border: none;
+      width: 300px;
+      max-width: 100%;
+      font-size: 1rem;
+      outline: none;
+    }
+    .newsletter-button {
+      padding: 12px 30px;
+      font-weight: 700;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      color: #0f1923;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(102, 166, 255, 0.54);
+      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .newsletter-button:hover {
+      transform: scale(1.05);
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 2rem;
+      font-size: 0.9rem;
+      color: #ffffffaa;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+   
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="Sports Team Management Logo">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports Team Management Logo" />
+    Sports TeamZone
+  </div>
+  <nav aria-label="Primary navigation">
+    <a href="home.html" tabindex="0">Home</a>
+    <a href="teamscheduler.html" tabindex="0">Team Scheduler</a>
+    <a href="teamlist.html" tabindex="0">Team List</a>
+    <a href="statistics.html" tabindex="0">Statistics</a>
+    <a href="contact.html" tabindex="0">Contact</a>
+     <a href="login.html"tabindex="0">Login</a>
+    <a href="register.html"tabindex="0">Register</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Welcome to Sports Team Management</h1>
+
+  <section aria-label="About the project" class="info-box">
+    <h2>About This Project</h2>
+    <p>This Sports Team Management system is designed to simplify and streamline the organization of sports teams for coaches, managers, and players. Whether you are managing schedules, tracking player performance, or communicating important announcements, this platform provides an intuitive and centralized way to handle all team-related activities.</p>
+    <p>The system supports multiple sports and is flexible to fit the unique needs of any team, from amateur to professional levels.</p>
+  </section>
+
+  <section aria-label="How it works" class="info-box">
+    <h2>How It Works</h2>
+    <div class="workflow" role="list">
+      <div class="step" role="listitem" tabindex="0" aria-label="Step 1: Create Schedule">
+        <span class="material-icons-outlined step-icon" aria-hidden="true">event</span>
+        <h3 class="step-title">Create Schedule</h3>
+        <p class="step-desc">Set up practice sessions, matches and events with our intuitive scheduler.</p>
+      </div>
+      <div class="step" role="listitem" tabindex="0" aria-label="Step 2: Manage Team">
+        <span class="material-icons-outlined step-icon" aria-hidden="true">groups</span>
+        <h3 class="step-title">Manage Team</h3>
+        <p class="step-desc">Maintain player roster with full profile and stats.</p>
+      </div>
+      <div class="step" role="listitem" tabindex="0" aria-label="Step 3: Track Progress">
+        <span class="material-icons-outlined step-icon" aria-hidden="true">bar_chart</span>
+        <h3 class="step-title">Track Progress</h3>
+        <p class="step-desc">Analyze match results and player performances to improve.</p>
+      </div>
+      <div class="step" role="listitem" tabindex="0" aria-label="Step 4: Communicate">
+        <span class="material-icons-outlined step-icon" aria-hidden="true">notifications_active</span>
+        <h3 class="step-title">Communicate</h3>
+        <p class="step-desc">Send updates and notifications to all team members instantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Benefits" class="info-box">
+    <h2>Benefits of Using Our Platform</h2>
+    <ul>
+      <li>Centralized and easy management of all team-related data</li>
+      <li>Improved communication within the team and staff</li>
+      <li>Time saving by automating schedules and notifications</li>
+      <li>Better decision making based on detailed statistics</li>
+      <li>Increased team engagement and performance</li>
+    </ul>
+  </section>
+
+  <section aria-label="Tech stack" class="info-box">
+    <h2>Technology Stack</h2>
+    <p>Our solution leverages the following technologies for a robust and user-friendly experience:</p>
+    <ul>
+      <li>HTML5, CSS3, and modern JavaScript (ES6+)</li>
+      <li>Responsive design for mobile and desktop</li>
+      <li>Intuitive UI with CSS Grid & Flexbox layout</li>
+      <li>Progressive enhancement and accessibility standards</li>
+    </ul>
+  </section>
+
+  <section aria-label="Newsletter subscription" class="newsletter">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to our newsletter to get the latest updates and tips on managing your sports team effectively.</p>
+    <form class="newsletter-form" action="#" method="post" novalidate>
+      <input type="email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address" />
+      <button type="submit" class="newsletter-button">Subscribe</button>
+    </form>
+  </section>
+
+  <button class="btn-primary" aria-label="Get started now">Get Started</button>
+</main>
+
+<footer>
+  &copy; 2024 Sports Team Management. All rights reserved.
+</footer>
+
+</body>
+</html>
