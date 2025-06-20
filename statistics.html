@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statistics - Sports Team Management</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Glass Effect Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffffcc;
+      user-select: none;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: #e4e9f0cc;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255 255 255 / 0.25);
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      margin: 3rem auto 4rem;
+      padding: 3rem 4rem;
+      text-align: left;
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      color: #e0eaff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.2rem;
+      color: #a0cfff;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #66a6ff;
+      padding-bottom: 0.3rem;
+    }
+    .stat-section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .stat-description {
+      font-size: 1.1rem;
+      color: #cfdcffcc;
+      margin-bottom: 1.5rem;
+    }
+    /* Charts container */
+    .chart-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .chart-box {
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      max-width: 100%;
+      height: 300px;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.9rem;
+      color: #ffffffaa;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 2rem 2rem;
+        margin: 2rem 1rem 3rem;
+      }
+      main h1 {
+        font-size: 2.2rem;
+      }
+      main h2 {
+        font-size: 1.8rem;
+      }
+      .stat-description {
+        font-size: 1rem;
+      }
+      .chart-box {
+        padding: 0.5rem;
+      }
+    }
+  </style>
+  <!-- Link Google Material Icons & Chart.js CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="Sports Team Management Logo">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports Team Management Logo" />
+    Sports TeamMgmt
+  </div>
+  <nav aria-label="Primary navigation">
+    <a href="home.html" tabindex="0">Home</a>
+    <a href="teamscheduler.html" tabindex="0">Team Scheduler</a>
+    <a href="teamlist.html" tabindex="0">Team List</a>
+    <a href="statistics.html" tabindex="0">Statistics</a>
+    <a href="contact.html" tabindex="0">Contact</a>
+    <a href="login.html"tabindex="0">Login</a>
+    <a href="register.html"tabindex="0">Register</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Team & Player Statistics</h1>
+  
+  <section class="stat-section" aria-label="Matches Played Statistics">
+    <h2>Matches Played - Current Season</h2>
+    <p class="stat-description">Number of matches played across different teams this season.</p>
+    <div class="chart-box">
+      <canvas id="matchesPlayedChart" aria-label="Bar chart showing matches played by teams" role="img"></canvas>
+    </div>
+  </section>
+
+  <section class="stat-section" aria-label="Player Performance Statistics">
+    <h2>Player Performance Highlights</h2>
+    <p class="stat-description">Top performers based on key metrics like runs scored, goals, and assists.</p>
+    <div class="chart-box">
+      <canvas id="playerPerformanceChart" aria-label="Radar chart showing player performance metrics" role="img"></canvas>
+    </div>
+  </section>
+
+  <section class="stat-section" aria-label="Win/Loss Ratio">
+    <h2>Team Win/Loss Ratio</h2>
+    <p class="stat-description">Overview of win and loss percentages for major teams.</p>
+    <div class="chart-box">
+      <canvas id="winLossChart" aria-label="Pie chart showing teams win and loss ratio" role="img"></canvas>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 Sports Team Management. All rights reserved.
+</footer>
+
+<script>
+  // Bar Chart for Matches Played
+  const ctxMatches = document.getElementById('matchesPlayedChart').getContext('2d');
+  const matchesPlayedChart = new Chart(ctxMatches, {
+    type: 'bar',
+    data: {
+      labels: ['Cricket', 'Football', 'Hockey', 'Basketball', 'Rugby'],
+      datasets: [{
+        label: 'Matches Played',
+        data: [25, 18, 20, 12, 8],
+        backgroundColor: 'rgba(102,166,255,0.8)'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true, stepSize: 5 }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+  // Radar Chart for Player Performance
+  const ctxPerformance = document.getElementById('playerPerformanceChart').getContext('2d');
+  const playerPerformanceChart = new Chart(ctxPerformance, {
+    type: 'radar',
+    data: {
+      labels: ['Runs', 'Goals', 'Assists', 'Tackles', 'Saves'],
+      datasets: [
+        {
+          label: 'Player A',
+          data: [85, 72, 78, 60, 55],
+          backgroundColor: 'rgba(102,166,255,0.4)',
+          borderColor: 'rgba(102,166,255,1)',
+          borderWidth: 2
+        },
+        {
+          label: 'Player B',
+          data: [75, 60, 80, 64, 70],
+          backgroundColor: 'rgba(255, 159, 64, 0.4)',
+          borderColor: 'rgba(255, 159, 64, 1)',
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        r: {
+          angleLines: { display: true },
+          suggestedMin: 0,
+          suggestedMax: 100
+        }
+      }
+    }
+  });
+
+  // Pie Chart for Win/Loss Ratio
+  const ctxWinLoss = document.getElementById('winLossChart').getContext('2d');
+  const winLossChart = new Chart(ctxWinLoss, {
+    type: 'pie',
+    data: {
+      labels: ['Wins', 'Losses'],
+      datasets: [{
+        data: [65, 35],
+        backgroundColor: ['rgba(102,166,255,0.8)', 'rgba(255,99,132,0.8)']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
