@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Indian Sports Teams - Sports Team Management</title>
+  <title>Manage Teams - Sports TeamZone</title>
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -15,12 +14,11 @@
       min-height: 100vh;
       font-family: 'Inter', sans-serif;
       color: #fff;
-      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
     }
-    /* Glass Effect Navigation */
     header {
       position: sticky;
       top: 0;
@@ -51,139 +49,303 @@
     }
     nav {
       display: flex;
-      gap: 2rem;
+      gap: 1.8rem;
     }
     nav a {
       color: #e4e9f0cc;
       font-weight: 600;
       font-size: 1rem;
       text-decoration: none;
-      padding: 8px 12px;
+      padding: 8px 15px;
       border-radius: 12px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     }
     nav a:hover,
     nav a:focus {
-      background-color: rgba(255 255 255 / 0.25);
+      background-color: rgba(255 255 255 / 0.35);
       color: #fff;
       outline: none;
       cursor: pointer;
+      transform: translateY(-2px);
     }
     main {
       flex: 1;
-      max-width: 1100px;
-      margin: 3rem auto 4rem;
-      padding: 2rem 3rem;
+      max-width: 1000px;
+      margin: 3.5rem auto 4.5rem;
+      padding: 3.5rem 4.5rem;
       background: rgba(0,0,0,0.5);
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
       color: #e0eaff;
-      line-height: 1.6;
+      line-height: 1.8;
       display: flex;
       flex-direction: column;
       gap: 40px;
     }
     h1 {
       font-weight: 900;
-      font-size: 3rem;
+      font-size: 3.2rem;
       line-height: 1.2;
       margin-bottom: 0.5rem;
       background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
+      letter-spacing: -0.03em;
+    }
+    .page-description {
+      font-size: 1.15rem;
+      padding: 0 1rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      color: #dce6ff;
     }
     h2 {
+      font-weight: 700;
       font-size: 2.2rem;
       color: #a0cfff;
       margin-bottom: 1.5rem;
-      border-bottom: 3px solid #66a6ff;
-      padding-bottom: 0.3rem;
-    }
-    section.team {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .team-info {
-      font-size: 1.1rem;
-      max-width: 900px;
-      margin-bottom: 1rem;
-      padding-left: 1rem;
-      border-left: 4px solid #66a6ff;
-    }
-    .players-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
-    }
-    .player-card {
-      background: rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 1rem;
+      border-bottom: 2px solid #66a6ff;
+      padding-bottom: 0.5rem;
+      letter-spacing: -0.02em;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: default;
-      transition: transform 0.3s ease;
     }
-    .player-card:hover,
-    .player-card:focus-within {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(102, 166, 255, 0.6);
-      outline: none;
+    .team-management {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
     }
-    .player-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    .add-team-form {
+      background: rgba(255, 255, 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-radius: 20px;
+      padding: 2.5rem 3.5rem;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.45);
+      width: 100%;
+      max-width: 650px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .player-name {
+    .add-team-form label {
+      display: block;
+      margin-bottom: 0.6rem;
       font-weight: 700;
       color: #a0cfff;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
-    .player-role {
-      font-size: 0.9rem;
-      color: #cfdcffdd;
-      margin-top: 0.3rem;
+    .add-team-form input,
+    .add-team-form select {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 1.8rem;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 1.05rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .add-team-form input:focus,
+    .add-team-form select:focus {
+      background: rgba(255,255,255,0.45);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 0 3px rgba(102, 166, 255, 0.5);
+    }
+    .add-team-form select option {
+        background-color: #0f1923;
+        color: #fff;
+    }
+    .btn-action {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      color: #0f1923;
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(102, 166, 255, 0.65);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-action:hover,
+    .btn-action:focus {
+      transform: scale(1.06);
+      box-shadow: 0 15px 50px rgba(102, 166, 255, 0.8);
+      outline: none;
+    }
+
+    .team-list-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.45);
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .team-list-container table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #e0eaff;
+      font-size: 1rem;
+    }
+    .team-list-container th,
+    .team-list-container td {
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding: 1rem 1.2rem;
+      text-align: left;
+    }
+    .team-list-container th {
+      background: rgba(102, 166, 255, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      font-weight: 700;
+    }
+    .team-list-container tr:last-child td {
+        border-bottom: none;
+    }
+    .team-list-actions button {
+      padding: 8px 15px;
+      font-size: 0.95rem;
+      border-radius: 25px;
+      margin-right: 8px;
+      box-shadow: 0 5px 20px rgba(102, 166, 255, 0.4);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .team-list-actions button.edit-btn {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        color: #333;
+    }
+    .team-list-actions button.delete-btn {
+        background: linear-gradient(135deg, #FF6B6B 0%, #EE4D2D 100%);
+        color: #fff;
+    }
+    .team-list-actions button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 25px rgba(102, 166, 255, 0.6);
+    }
+    .notification {
+      display: none;
+      background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.6);
+      animation: fadeOut 3s forwards;
+    }
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; display: none; }
     }
     footer {
       text-align: center;
-      padding: 1.5rem 2rem;
+      padding: 2rem 2rem;
       font-size: 0.9rem;
       color: #ffffffaa;
       user-select: none;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       backdrop-filter: saturate(180%) blur(10px);
     }
-    /* Responsive */
     @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem 1rem;
+      }
+      nav {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
       main {
-        padding: 2rem 1.5rem;
-        margin: 2rem 1rem 3rem;
+        margin: 2rem auto;
+        padding: 2rem 2.5rem;
+        gap: 30px;
       }
       h1 {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
+      }
+      .page-description {
+        font-size: 1rem;
+        padding: 0;
       }
       h2 {
         font-size: 1.8rem;
       }
-      .players-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
+      .add-team-form {
+        padding: 2rem;
       }
-      .player-card {
-        padding: 0.8rem;
+      .add-team-form input,
+      .add-team-form select {
+        padding: 10px 12px;
+        font-size: 0.95rem;
       }
-      .player-image {
-        width: 80px;
-        height: 80px;
+      .btn-action {
+        padding: 12px;
+        font-size: 1.1rem;
       }
+      .team-list-container {
+        max-height: 300px;
+        padding: 1.5rem;
+      }
+      .team-list-container th,
+      .team-list-container td {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      .team-list-actions button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        margin-right: 5px;
+      }
+    }
+    @media (max-width: 480px) {
+        main {
+            padding: 1.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        nav a {
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+        }
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+        .add-team-form {
+            padding: 1.5rem;
+        }
+        .team-list-container {
+            padding: 1rem;
+        }
+        .team-list-container th,
+        .team-list-container td {
+            padding: 0.5rem;
+            word-break: break-word;
+        }
     }
   </style>
 </head>
@@ -191,8 +353,8 @@
 
 <header>
   <div class="logo" aria-label="Sports Team Management Logo">
-    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports Team Management Logo" />
-    Sports TeamMgmt
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports TeamZone Logo" />
+    Sports TeamZone
   </div>
   <nav aria-label="Primary navigation">
     <a href="home.html" tabindex="0">Home</a>
@@ -206,118 +368,207 @@
 </header>
 
 <main>
-  <h1>Indian Sports Teams</h1>
+  <h1>Manage Your Teams</h1>
+  <p class="page-description">Create, view, and manage all your sports teams in one centralized location. Add new teams, update their details, or remove them as needed to keep your roster organized.</p>
 
-  <!-- Cricket Team -->
-  <section class="team" aria-label="Indian Cricket Team">
-    <h2>Indian Cricket Team</h2>
-    <div class="team-info">
-      The Indian national cricket team, governed by the Board of Control for Cricket in India (BCCI), is one of the most successful cricketing teams globally.
-    </div>
-    <div class="players-grid" role="list">
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Virat Kohli, Batsman">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Virat_Kohli_01.jpg" alt="Virat Kohli" />
-        <div class="player-name">Virat Kohli</div>
-        <div class="player-role">Batsman / Former Captain</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Rohit Sharma, Captain & Batsman">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Rohit_Sharma_%28cropped%29.jpg" alt="Rohit Sharma" />
-        <div class="player-name">Rohit Sharma</div>
-        <div class="player-role">Captain / Batsman</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Jasprit Bumrah, Bowler">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Jasprit_Bumrah_2021_cropped.jpg" alt="Jasprit Bumrah" />
-        <div class="player-name">Jasprit Bumrah</div>
-        <div class="player-role">Bowler</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player KL Rahul, Batsman & Wicketkeeper">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/KL_Rahul_%282019%29.jpg" alt="KL Rahul" />
-        <div class="player-name">KL Rahul</div>
-        <div class="player-role">Batsman & Wicketkeeper</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Hardik Pandya, All-rounder">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Hardik_Pandya_2019.jpg" alt="Hardik Pandya" />
-        <div class="player-name">Hardik Pandya</div>
-        <div class="player-role">All-rounder</div>
-      </article>
-    </div>
-  </section>
+  <section class="team-management" aria-label="Team Creation and Management">
 
-  <!-- Football Team -->
-  <section class="team" aria-label="Indian Football Team">
-    <h2>Indian Football Team</h2>
-    <div class="team-info">
-      The Indian national football team represents India in international men's football competitions and is controlled by the All India Football Federation (AIFF).
-    </div>
-    <div class="players-grid" role="list">
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Sunil Chhetri, Forward">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Sunil_Chhetri_with_the_Brazil_U20s%2C_November_2008.jpg" alt="Sunil Chhetri" />
-        <div class="player-name">Sunil Chhetri</div>
-        <div class="player-role">Forward & Captain</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Gurpreet Singh Sandhu, Goalkeeper">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/7/76/Gurpreet_Singh_in_2017.jpg" alt="Gurpreet Singh Sandhu" />
-        <div class="player-name">Gurpreet Singh Sandhu</div>
-        <div class="player-role">Goalkeeper</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Anirudh Thapa, Midfielder">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Anirudh_Thapa.jpg" alt="Anirudh Thapa" />
-        <div class="player-name">Anirudh Thapa</div>
-        <div class="player-role">Midfielder</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Sandesh Jhingan, Defender">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Sandesh_Jhingan_PBFC_2017.jpg" alt="Sandesh Jhingan" />
-        <div class="player-name">Sandesh Jhingan</div>
-        <div class="player-role">Defender</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Udanta Singh, Winger">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Udanta_Singh_at_PBFC_2017.jpg" alt="Udanta Singh" />
-        <div class="player-name">Udanta Singh</div>
-        <div class="player-role">Winger</div>
-      </article>
-    </div>
-  </section>
+    <div class="notification" id="notification" role="status" aria-live="polite"></div>
 
-  <!-- Hockey Team -->
-  <section class="team" aria-label="Indian Hockey Team">
-    <h2>Indian Hockey Team</h2>
-    <div class="team-info">
-      The Indian national field hockey team is one of the most successful teams historically, with multiple Olympic gold medals.
+    <form class="add-team-form" aria-label="Add new team" id="teamForm" novalidate>
+      <h2>Add or Edit Team</h2>
+      <label for="team-name">Team Name</label>
+      <input type="text" id="team-name" name="team-name" placeholder="e.g., The Chargers" required aria-required="true" />
+
+      <label for="sport-type">Sport</label>
+      <select id="sport-type" name="sport-type" required aria-required="true">
+        <option value="" disabled selected>Select Sport</option>
+        <option value="Football">Football</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Soccer">Soccer</option>
+        <option value="Baseball">Baseball</option>
+        <option value="Hockey">Hockey</option>
+        <option value="Cricket">Cricket</option>
+        <option value="Volleyball">Volleyball</option>
+      </select>
+
+      <label for="coach-name">Coach Name</label>
+      <input type="text" id="coach-name" name="coach-name" placeholder="e.g., Coach John Doe" />
+
+      <label for="team-moto">Team Motto/Slogan</label>
+      <input type="text" id="team-moto" name="team-moto" maxlength="100" placeholder="e.g., Victory Through Unity" />
+
+      <button type="submit" class="btn-action" id="submitButton">Add Team</button>
+    </form>
+
+    <div class="team-list-container" aria-live="polite" aria-label="List of managed teams" tabindex="0">
+      <h2>Your Current Teams</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Team Name</th>
+            <th scope="col">Sport</th>
+            <th scope="col">Coach</th>
+            <th scope="col">Motto</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="teamListBody">
+          </tbody>
+      </table>
     </div>
-    <div class="players-grid" role="list">
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Manpreet Singh, Midfielder">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Manpreet_Singh_2017.png" alt="Manpreet Singh" />
-        <div class="player-name">Manpreet Singh</div>
-        <div class="player-role">Midfielder & Captain</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Harmanpreet Singh, Defender">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Harmanpreet_Singh_in_Georgetown_2017.jpg" alt="Harmanpreet Singh" />
-        <div class="player-name">Harmanpreet Singh</div>
-        <div class="player-role">Defender</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player PR Sreejesh, Goalkeeper">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/2/23/PR_Sreejesh_2017.jpg" alt="PR Sreejesh" />
-        <div class="player-name">PR Sreejesh</div>
-        <div class="player-role">Goalkeeper</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Akashdeep Singh, Forward">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Akashdeep_Singh_2017.jpg" alt="Akashdeep Singh" />
-        <div class="player-name">Akashdeep Singh</div>
-        <div class="player-role">Forward</div>
-      </article>
-      <article class="player-card" tabindex="0" role="listitem" aria-label="Player Vivek Sagar Prasad, Midfielder">
-        <img class="player-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Vivek_Sagar_Prasad_2017.jpg" alt="Vivek Sagar Prasad" />
-        <div class="player-name">Vivek Sagar Prasad</div>
-        <div class="player-role">Midfielder</div>
-      </article>
-    </div>
+
   </section>
 </main>
 
 <footer>
-  &copy; 2024 Sports Team Management. All rights reserved.
+  &copy; 2024 Sports TeamZone. All rights reserved.
 </footer>
+
+<script>
+  const teamForm = document.getElementById('teamForm');
+  const teamListBody = document.getElementById('teamListBody');
+  const notification = document.getElementById('notification');
+  const submitButton = document.getElementById('submitButton');
+
+  let editingTeamRow = null;
+
+  document.addEventListener('DOMContentLoaded', loadTeams);
+
+  teamForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = teamForm['team-name'].value;
+    const sport = teamForm['sport-type'].value;
+    const coach = teamForm['coach-name'].value || 'N/A';
+    const motto = teamForm['team-moto'].value || 'N/A';
+
+    if (!name || !sport) {
+      showNotification('Please fill in Team Name and Sport.', 'error');
+      return;
+    }
+
+    const newTeam = { name, sport, coach, motto };
+
+    if (editingTeamRow) {
+      updateTeamInTable(editingTeamRow, newTeam);
+      updateTeamInLocalStorage(editingTeamRow.dataset.originalName, newTeam);
+      showNotification('Team updated successfully!', 'success');
+      editingTeamRow = null;
+      submitButton.textContent = 'Add Team';
+    } else {
+      addTeamToTable(newTeam);
+      saveTeamToLocalStorage(newTeam);
+      showNotification('Team added successfully!', 'success');
+    }
+    teamForm.reset();
+  });
+
+  function addTeamToTable(team) {
+    const newRow = document.createElement('tr');
+    newRow.dataset.originalName = team.name;
+
+    [team.name, team.sport, team.coach, team.motto].forEach(text => {
+      const td = document.createElement('td');
+      td.textContent = text;
+      newRow.appendChild(td);
+    });
+
+    const actionsTd = document.createElement('td');
+    actionsTd.className = 'team-list-actions';
+
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.className = 'edit-btn';
+    editButton.setAttribute('aria-label', `Edit team ${team.name}`);
+    editButton.onclick = () => editTeam(newRow, team);
+    actionsTd.appendChild(editButton);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete-btn';
+    deleteButton.setAttribute('aria-label', `Delete team ${team.name}`);
+    deleteButton.onclick = () => {
+      if (confirm(`Are you sure you want to delete ${team.name}?`)) {
+        deleteTeam(newRow, team);
+      }
+    };
+    actionsTd.appendChild(deleteButton);
+
+    newRow.appendChild(actionsTd);
+    teamListBody.appendChild(newRow);
+  }
+
+  function updateTeamInTable(row, updatedTeam) {
+    row.cells[0].textContent = updatedTeam.name;
+    row.cells[1].textContent = updatedTeam.sport;
+    row.cells[2].textContent = updatedTeam.coach;
+    row.cells[3].textContent = updatedTeam.motto;
+    row.dataset.originalName = updatedTeam.name;
+  }
+
+  function editTeam(row, team) {
+    teamForm['team-name'].value = team.name;
+    teamForm['sport-type'].value = team.sport;
+    teamForm['coach-name'].value = team.coach === 'N/A' ? '' : team.coach;
+    teamForm['team-moto'].value = team.motto === 'N/A' ? '' : team.motto;
+
+    editingTeamRow = row;
+    submitButton.textContent = 'Update Team';
+    showNotification(`Editing team: ${team.name}. Make changes and click "Update Team".`, 'info');
+  }
+
+  function deleteTeam(row, teamToDelete) {
+    teamListBody.removeChild(row);
+    let teams = JSON.parse(localStorage.getItem('teams')) || [];
+    teams = teams.filter(team =>
+      !(team.name === teamToDelete.name &&
+        team.sport === teamToDelete.sport &&
+        team.coach === teamToDelete.coach &&
+        team.motto === teamToDelete.motto)
+    );
+    localStorage.setItem('teams', JSON.stringify(teams));
+    showNotification('Team deleted successfully!', 'success');
+  }
+
+  function saveTeamToLocalStorage(team) {
+    let teams = JSON.parse(localStorage.getItem('teams')) || [];
+    teams.push(team);
+    localStorage.setItem('teams', JSON.stringify(teams));
+  }
+
+  function updateTeamInLocalStorage(originalName, updatedTeam) {
+    let teams = JSON.parse(localStorage.getItem('teams')) || [];
+    const index = teams.findIndex(team => team.name === originalName);
+    if (index !== -1) {
+      teams[index] = updatedTeam;
+    }
+    localStorage.setItem('teams', JSON.stringify(teams));
+  }
+
+  function loadTeams() {
+    const teams = JSON.parse(localStorage.getItem('teams')) || [];
+    teams.forEach(team => addTeamToTable(team));
+  }
+
+  function showNotification(message, type = 'success') {
+    notification.textContent = message;
+    notification.className = 'notification';
+    if (type === 'success') {
+      notification.style.background = 'linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.6)';
+    } else if (type === 'error') {
+      notification.style.background = 'linear-gradient(135deg, #FF6B6B 0%, #EE4D2D 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(255, 107, 107, 0.6)';
+    } else if (type === 'info') {
+      notification.style.background = 'linear-gradient(135deg, #5B86E5 0%, #36D1DC 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(91, 134, 229, 0.6)';
+    }
+    notification.style.display = 'block';
+    notification.style.animation = 'none';
+    void notification.offsetWidth;
+    notification.style.animation = 'fadeOut 3s forwards';
+  }
+</script>
 
 </body>
 </html>
-```
