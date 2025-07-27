@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Sports TeamZone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffffcc;
+      user-select: none;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav {
+      display: flex;
+      gap: 1.8rem;
+    }
+    nav a {
+      color: #e4e9f0cc;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255 255 255 / 0.35);
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
+    main {
+      flex: 1;
+      max-width: 700px;
+      margin: 3.5rem auto 4.5rem;
+      padding: 3.5rem 4.5rem;
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+      color: #e0eaff;
+      line-height: 1.8;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      letter-spacing: -0.03em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    label {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: #a0cfff;
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      resize: vertical;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 0;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      background: rgba(255,255,255,0.45);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 0 3px rgba(102, 166, 255, 0.5);
+    }
+    button[type="submit"] {
+      padding: 16px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      color: #0f1923;
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(102, 166, 255, 0.65);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      transform: scale(1.06);
+      box-shadow: 0 15px 50px rgba(102, 166, 255, 0.8);
+      outline: none;
+    }
+    .contact-info {
+      margin-top: 3rem;
+      font-size: 1.05rem;
+      color: #dce6ff;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .contact-info p strong {
+        color: #a0cfff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 2rem;
+      font-size: 0.9rem;
+      color: #ffffffaa;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem 1rem;
+      }
+      nav {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      main {
+        margin: 2rem auto;
+        padding: 2rem 2.5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+        main {
+            padding: 1.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        nav a {
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+        }
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+        button[type="submit"] {
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="Sports TeamZone Logo">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports TeamZone Logo" />
+    Sports TeamZone
+  </div>
+  <nav aria-label="Primary navigation">
+    <a href="home.html" tabindex="0">Home</a>
+    <a href="teamscheduler.html" tabindex="0">Team Scheduler</a>
+    <a href="teamlist.html" tabindex="0">Team List</a>
+    <a href="statistics.html" tabindex="0">Statistics</a>
+    <a href="contact.html" tabindex="0">Contact</a>
+    <a href="login.html"tabindex="0">Login</a>
+    <a href="register.html"tabindex="0">Register</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Contact Us</h1>
+
+  <form action="#" method="POST" novalidate aria-label="Contact form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Full Name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="contact-info" aria-live="polite">
+    <p><strong>Email:</strong> support@sportsteammanagement.com</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Address:</strong> 123 Sports Avenue, Rajkot, Gujarat, India</p>
+  </div>
+</main>
+
+<footer>
+  &copy; 2024 Sports TeamZone. All rights reserved.
+</footer>
+
+</body>
+</html>
