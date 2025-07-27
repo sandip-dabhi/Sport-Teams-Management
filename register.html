@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Register - Sports Team Management</title>
+  <title>Register - Sports TeamZone</title>
   <style>
     * {
       margin: 0;
@@ -11,224 +11,346 @@
       box-sizing: border-box;
     }
     html, body {
-      height: 100%;
-      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
       color: #fff;
-      overflow: hidden;
-    }
-    body {
-      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7af33ffa-5e16-4e03-bfb0-6398ffa99f77.png') no-repeat center center fixed;
       background-size: cover;
-      position: relative;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.15);
+      backdrop-filter: saturate(180%) blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: 0;
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffffcc;
+      user-select: none;
     }
-    .register-container {
-      position: relative;
-      z-index: 1;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(14px);
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav {
+      display: flex;
+      gap: 1.8rem;
+    }
+    nav a {
+      color: #e4e9f0cc;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255 255 255 / 0.35);
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
+    main {
+      flex: 1;
+      max-width: 700px;
+      margin: 3.5rem auto 4.5rem;
+      padding: 3.5rem 4.5rem;
+      background: rgba(0,0,0,0.5);
       border-radius: 20px;
-      padding: 40px 48px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+      color: #e0eaff;
+      line-height: 1.8;
     }
     h1 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 24px;
+      font-weight: 900;
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-align: center;
-      letter-spacing: 1.5px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      letter-spacing: -0.03em;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
     label {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: #a0cfff;
       display: block;
-      color: #d1d5db;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
     input[type="text"],
     input[type="email"],
     input[type="password"] {
+      width: 100%;
       padding: 12px 16px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: none;
-      font-size: 1rem;
       outline: none;
-      background: rgba(255, 255, 255, 0.15);
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.25);
       color: #fff;
-      transition: background 0.3s ease;
-      box-shadow: inset 0 2px 5px rgba(255,255,255,0.2);
-    }
-    input[type="text"]::placeholder,
-    input[type="email"]::placeholder,
-    input[type="password"]::placeholder  {
-      color: #bbb;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 0;
     }
     input[type="text"]:focus,
     input[type="email"]:focus,
     input[type="password"]:focus {
-      background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 8px 2px rgba(74,144,226,0.7);
+      background: rgba(255,255,255,0.45);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 0 3px rgba(102, 166, 255, 0.5);
     }
-    button.register-button {
-      margin-top: 8px;
-      padding: 14px;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      border: none;
-      background: linear-gradient(135deg, #4a90e2, #1e40af);
-      color: white;
+    button[type="submit"] {
+      padding: 16px;
+      font-size: 1.25rem;
       font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      color: #0f1923;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.6);
+      box-shadow: 0 10px 35px rgba(102, 166, 255, 0.65);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 280px;
+      margin: 0 auto;
     }
-    button.register-button:hover,
-    button.register-button:focus {
-      background: linear-gradient(135deg, #1e40af, #4a90e2);
-      transform: translateY(-2px);
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      transform: scale(1.06);
+      box-shadow: 0 15px 50px rgba(102, 166, 255, 0.8);
       outline: none;
-      box-shadow: 0 6px 16px rgba(30, 64, 175, 0.85);
     }
-    .login-button {
-      margin-top: 12px;
-      padding: 14px;
-      font-size: 1.1rem;
+    .notification {
+      display: none;
+      background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+      color: #fff;
+      padding: 12px 20px;
       border-radius: 10px;
-      border: none;
-      background-color: #000000;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.8);
-      display: block;
+      margin: 15px auto;
       text-align: center;
-    }
-    .login-button:hover,
-    .login-button:focus {
-      background-color: #222222;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.9);
-      transform: translateY(-2px);
-      outline: none;
-    }
-    .message {
-      margin-top: 12px;
       font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.6);
+      animation: fadeOut 3s forwards;
+      max-width: 90%;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+    .login-link-container {
       text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #dce6ff;
+    }
+    .login-link-container a {
+      color: #89f7fe;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .login-link-container a:hover {
+      color: #66a6ff;
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 2rem;
+      font-size: 0.9rem;
+      color: #ffffffaa;
       user-select: none;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: saturate(180%) blur(10px);
     }
-    .error {
-      color: #ff6b6b;
-    }
-    .success {
-      color: #32cd32;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem 1rem;
+      }
+      nav {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      main {
+        margin: 2rem auto;
+        padding: 2rem 2.5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
     }
     @media (max-width: 480px) {
-      .register-container {
-        padding: 32px 24px;
-      }
+        main {
+            padding: 1.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        nav a {
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+        }
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+        button[type="submit"] {
+            padding: 12px;
+            font-size: 1.1rem;
+        }
     }
   </style>
 </head>
 <body>
 
-  <div class="register-container" role="main" aria-label="Registration form">
-    <h1>Create Account</h1>
- <form action="/submit" method="GET" id="registerForm" novalidate>
-      <div>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="username" name="fullName" placeholder="Enter fullName" required />
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter email" required />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter password" minlength="6" required />
-      </div>
-      <button type="submit" class="register-button">Register</button>
-    </form>
-
-    <button class="login-button" onclick="window.location.href='login.html'">Already have an account? Log In</button>
-    <div id="message" class="message" aria-live="polite"></div>
+<header>
+  <div class="logo" aria-label="Sports TeamZone Logo">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c0dff07e-e62e-4701-b107-39c333adec8c.png" alt="Sports TeamZone Logo" />
+    Sports TeamZone
   </div>
+  <nav aria-label="Primary navigation">
+    <a href="home.html" tabindex="0">Home</a>
+    <a href="teamscheduler.html" tabindex="0">Team Scheduler</a>
+    <a href="teamlist.html" tabindex="0">Team List</a>
+    <a href="statistics.html" tabindex="0">Statistics</a>
+    <a href="contact.html" tabindex="0">Contact</a>
+    <a href="login.html"tabindex="0">Login</a>
+    <a href="register.html"tabindex="0">Register</a>
+  </nav>
+</header>
 
-  <script>
-    const registerForm = document.getElementById('registerForm');
-    const messageDiv = document.getElementById('message');
+<main>
+  <h1>Register Your Account</h1>
+  <div class="notification" id="notification" role="status" aria-live="polite"></div>
 
-    // Load users from localStorage or initialize empty array
-    function getUsers() {
-      return JSON.parse(localStorage.getItem('users')) || [];
+  <form id="registerForm" action="#" method="POST" novalidate aria-label="Registration form">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Choose a username" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Create a password" required minlength="6" />
+
+    <label for="confirm-password">Confirm Password</label>
+    <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" required />
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p class="login-link-container">
+    Already have an account? <a href="login.html">Log In here</a>
+  </p>
+</main>
+
+<footer>
+  &copy; 2024 Sports TeamZone. All rights reserved.
+</footer>
+
+<script>
+  const registerForm = document.getElementById('registerForm');
+  const notification = document.getElementById('notification');
+
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = registerForm.username.value.trim();
+    const email = registerForm.email.value.trim();
+    const password = registerForm.password.value;
+    const confirmPassword = registerForm['confirm-password'].value;
+
+    if (!username || !email || !password || !confirmPassword) {
+      showNotification('Please fill in all fields.', 'error');
+      return;
     }
 
-    // Save users to localStorage
-    function saveUsers(users) {
-      localStorage.setItem('users', JSON.stringify(users));
+    if (password.length < 6) {
+      showNotification('Password must be at least 6 characters long.', 'error');
+      return;
     }
 
-    registerForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+    if (password !== confirmPassword) {
+      showNotification('Passwords do not match.', 'error');
+      return;
+    }
 
-      const username = registerForm.username.value.trim();
-      const email = registerForm.email.value.trim().toLowerCase();
-      const password = registerForm.password.value;
+    const userData = {
+      username: username,
+      email: email,
+      password: password
+    };
 
-      if (!username || !email || !password) {
-        showMessage('Please fill in all fields.', 'error');
-        return;
-      }
+    try {
+      // In a real application, this would be a fetch request to your backend server.
+      // The backend would then handle saving this data to userData.json securely.
+      // For demonstration purposes, we'll simulate success and then redirect.
 
-      if (password.length < 6) {
-        showMessage('Password must be at least 6 characters.', 'error');
-        return;
-      }
-
-      let users = getUsers();
-      // Check if email or username already exists
-      const userExists = users.some(u => u.email === email || u.username === username);
-      if (userExists) {
-        showMessage('Username or Email already registered.', 'error');
-        return;
-      }
-
-      // Add new user
-      users.push({ username, email, password });
-      saveUsers(users);
-
-      showMessage('Registration successful! You can now log in.', 'success');
-      registerForm.reset();
-
-      // Redirect to login page after a short delay
+      // Simulate a successful registration after a short delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      showNotification('Registration successful! Redirecting to login page...', 'success');
+      
+      // Redirect to login.html after a brief delay
       setTimeout(() => {
         window.location.href = 'login.html';
       }, 2000); // Redirect after 2 seconds
-    });
-
-    function showMessage(msg, type) {
-      messageDiv.textContent = msg;
-      messageDiv.className = 'message ' + (type === 'error' ? 'error' : 'success');
+      
+    } catch (error) {
+      console.error('Registration error:', error);
+      showNotification('Registration failed. Please try again later.', 'error');
     }
-  </script>
+  });
+
+  function showNotification(message, type = 'success') {
+    notification.textContent = message;
+    notification.className = 'notification'; // Reset classes
+    if (type === 'success') {
+      notification.style.background = 'linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.6)';
+    } else if (type === 'error') {
+      notification.style.background = 'linear-gradient(135deg, #FF6B6B 0%, #EE4D2D 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(255, 107, 107, 0.6)';
+    } else if (type === 'info') {
+      notification.style.background = 'linear-gradient(135deg, #5B86E5 0%, #36D1DC 100%)';
+      notification.style.boxShadow = '0 4px 15px rgba(91, 134, 229, 0.6)';
+    }
+    notification.style.display = 'block';
+    notification.style.animation = 'none';
+    void notification.offsetWidth;
+    notification.style.animation = 'fadeOut 3s forwards';
+  }
+</script>
+
 </body>
 </html>
