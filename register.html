@@ -313,18 +313,14 @@
     };
 
     try {
-      // In a real application, this would be a fetch request to your backend server.
-      // The backend would then handle saving this data to userData.json securely.
-      // For demonstration purposes, we'll simulate success and then redirect.
 
       // Simulate a successful registration after a short delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       showNotification('Registration successful! Redirecting to login page...', 'success');
       
-      // Redirect to login.html after a brief delay
       setTimeout(() => {
         window.location.href = 'login.html';
-      }, 2000); // Redirect after 2 seconds
+      }, 2000); 
       
     } catch (error) {
       console.error('Registration error:', error);
